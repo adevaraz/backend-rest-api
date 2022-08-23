@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    restart: always
+    env_file: ./.env
+    ports:
+      - $MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT
+    volumes:
+      - db:/data/db
+    networks:
+      - new_network
+  mongoseed:
+    container_name: mongoseed
+    depends_on:
+      - mongodb
+    env_file: ./.env
+    build:
+      context: ./mongo-seed
+      dockerfile: Dockerfile
+      args:
+        - DB_HOST=mongodb
+        - DB_PORT=$MONGODB_DOCKER_PORT
+        - DB_NAME=$MONGODB_DATABASE
+    networks:
+      - new_network
+  app:
+    container_name: app
+    depends_on:
+      - mongodb
+    build: ./rest-api
+    restart: always
+    env_file: ./.env
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    environment:
+      - DB_HOST=mongodb
+      - DB_PORT=$MONGODB_DOCKER_PORT
+      - DB_NAME=$MONGODB_DATABASE
+    stdin_open: true
+    tty: true
+    networks:
+      - new_network
+volumes:
+  db:
+networks:
+  new_network:
+    external: true

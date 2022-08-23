@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "6303359d244d87584862776d"
+  },
+  "username": "adminsatu",
+  "password": "admin",
+  "name": "admin1",
+  "isAdmin": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63045366b7bd01cadad13c88"
+  },
+  "username": "admindua",
+  "password": "admin",
+  "name": "admin1",
+  "isAdmin": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6304537db7bd01cadad13c8b"
+  },
+  "username": "userfoo",
+  "password": "user",
+  "name": "user foo",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63045385b7bd01cadad13c8e"
+  },
+  "username": "userbar",
+  "password": "user",
+  "name": "user bar",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6304538ab7bd01cadad13c91"
+  },
+  "username": "userbaz",
+  "password": "user",
+  "name": "user baz",
+  "isAdmin": false,
+  "__v": 0
+}]
