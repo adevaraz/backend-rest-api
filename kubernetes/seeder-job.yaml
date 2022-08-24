@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - name: mongoseed
-        image: mongoseed
+        image: adevaraz/backend-test_mongoseed:latest
         env:
         - name: DB_HOST
           value: "mongodb"
